@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Rock, Paper, Scissors, Lizard, Spock</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1 class="center">Rock, Paper, Scissors, Lizard, Spock</h1>
+		</div>
+		<div class="selection">
+			<p class="center">Choose</p>
+			<img id="rock" class="circle" src="images/rock.png">
+			<img id="paper" class="circle" src="images/paper.png">
+			<img id="scissors" class="circle" src="images/scissors.png">
+			<img id="lizard" class="circle" src="images/lizard.png">
+			<img id="spock" class="circle" src="images/spock.png">
+		</div>
+		<div class="results">
+			<p class="center">Your choice</p>
+			<div id="yourChoice" class="question-mark">?</div>
+			<p class="center">Computers choice</p>
+			<div id="computerChoice" class="question-mark">?</div>
+			<p class="shout center">Rock beats Paper. You Win!</p>
+		</div>
+		<div id="scoreboard"><strong>Your score</strong><br>0 wins<br>0 losses<br>0 ties</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="inc/rpsls.js"></script>
+	<script src="inc/eventlisteners.js"></script>
+	
+</body>
+</html>
