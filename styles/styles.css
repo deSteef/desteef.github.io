@@ -16,6 +16,23 @@ p {
 	min-height: 900px;
 	margin: auto;
 }
+.watermark {
+	min-width: 620px;
+	max-width: 1024px;
+	min-height: 900px;
+	margin: auto;
+	text-align: right;
+	margin-top: 1em;
+	font-size: 0.9em;
+}
+
+.watermark a {
+	color: #000;
+}
+
+.watermark a:hover {
+	color: #333333;
+}
 .header{
 	margin-bottom: 5em;
 }
