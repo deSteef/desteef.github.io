@@ -11,6 +11,7 @@ p {
 .container{
 	background-color: #fff;
 	border: 1px solid grey;
+	min-width: 620px;
 	max-width: 1024px;
 	min-height: 900px;
 	margin: auto;
@@ -48,14 +49,19 @@ p {
 	font-size: 2em;
 }
 #scoreboard {
-	position: absolute;
-	bottom: 50%;
-	right: 0;
-	width: auto;
 	background-color: lightgreen;
-	text-align: justify;
 	line-height: 2em;
+	text-align: center;
 	padding: 30px;
+}
+@media only screen and (min-width: 950px) {
+	#scoreboard {
+		position: absolute;
+		bottom: 50%;
+		right: 0;
+		width: auto;
+		text-align: justify;
+	}
 }
 .question-mark {
 	text-align: center;
