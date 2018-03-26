@@ -3,90 +3,104 @@
 	font-family: 'Montserrat', sans-serif;
 }
 body {
-	background-color: lightgrey;	
+	background-color: #fff;	
 }
 p {
 	font-size: 1.2em;
 }
 .container{
-	background-color: #fff;
-	border: 1px solid grey;
-	min-width: 620px;
-	max-width: 1024px;
-	min-height: 900px;
-	margin: auto;
-}
-.watermark {
-	min-width: 620px;
-	max-width: 1024px;
-	min-height: 900px;
-	margin: auto;
-	text-align: right;
-	margin-top: 1em;
-	font-size: 0.9em;
-}
-
-.watermark a {
-	color: #000;
-}
-
-.watermark a:hover {
-	color: #333333;
-}
-.header{
-	margin-bottom: 5em;
+	width: 100%;
 }
 .center {
 	text-align: center;
 }
 .selection, .results {
-	width: 620px;
-	margin: auto;
+	display: inline-block;
+	text-align: center;
+	width: 100%;
 	margin-bottom: 25px;
 }
 .circle {
-	position: relative;
-	top: 0;
+	display:inline-block;
 	border-radius: 100%;
-	width: 120px;
-	height: 120px;
+	width: 19%;
+	height: 19%;
+	min-width: 60px;
+	min-height: 60px;
+	max-width: 120px;
+	max-height: 120px;
 	padding: 10px;
+}
+#yourChoice .circle, #computerChoice .circle {
+	min-width: 80px;
+	min-height: 80px;
 }
 .selection .circle:hover {
 	transition: top 0.5s ease;
 	top: -5px;
 }
-.single {
-	display: block;
-	margin: auto;
-}
 .shout {
 	text-transform: uppercase;
 	font-weight: bold;
-	font-size: 2em;
+	font-size: 1.2em;
 }
 #scoreboard {
 	background-color: lightgreen;
 	line-height: 2em;
 	text-align: center;
-	padding: 30px;
+}
+.question-mark {
+	text-align: center;
+	color: #ababab;
+	font-size: 5em;
+	font-family: arial, sans-serif;
+}
+.selected {
+	border: 3px solid orange;
+}
+.watermark {
+	margin-top: 1em;
+	font-size: 0.9em;
+	text-align: center;
+}
+.watermark a {
+	color: #000;
+}
+.watermark a:hover {
+	color: #333333;
 }
 @media only screen and (min-width: 950px) {
+	body {
+		background-color: lightgrey;
+	}
+	.header{
+		margin-bottom: 5em;
+	}
+	.container {
+		background-color: #fff;
+		border: 1px solid grey;
+		max-width: 1024px;
+		margin: auto;
+	}
+	.question-mark {
+		font-size: 8em;
+		font-weight: 500;
+	}
+	.shout {
+		font-size: 2em;
+	}
 	#scoreboard {
 		position: absolute;
 		bottom: 50%;
 		right: 0;
 		width: auto;
 		text-align: justify;
+		padding: 30px;
 	}
-}
-.question-mark {
-	text-align: center;
-	font-size: 8em;
-	font-weight: 600;
-	color: #ababab;
-	font-family: arial, sans-serif;
-}
-.selected {
-	border: 3px solid orange;
+	.watermark {
+		max-width: 1024px;
+		margin: auto;
+		text-align: right;
+		margin-top: 1em;
+	}
 }
