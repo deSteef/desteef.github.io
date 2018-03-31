@@ -155,5 +155,3 @@ function testDetermineWinner() {
 	console.log("Test ran " + c + " times and exited with a total of:");
 	console.log(wins + " wins. " + losses + " losses. And " + ties + " ties.");
 }
-
-testDetermineWinner();
