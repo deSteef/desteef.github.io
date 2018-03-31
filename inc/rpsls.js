@@ -131,3 +131,29 @@ function determineWinner (userChoice, computerChoice) {
 		ties++;
 	}
 }
+
+function testDetermineWinner() {
+	console.log("Start test:");
+	var picks = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+	var c = 0;	// count number of tests;
+	var char; 	// shows boolean as char
+
+	for (i = 0; i < picks.length; i++) {
+		for (j = 0; j < picks.length; j++) {
+			c++;
+			determineWinner(picks[i], picks[j]);
+			if (winOrLose == 1) {
+				char = 'W';
+			} else if (winOrLose == 0) {
+				char = 'L';
+			} else {
+				char = 'T';
+			}
+			console.log("\t" + picks[i] + " vs " + picks[j] + ". Result: " + char);
+		}
+	}
+	console.log("Test ran " + c + " times and exited with a total of:");
+	console.log(wins + " wins. " + losses + " losses. And " + ties + " ties.");
+}
+
+testDetermineWinner();
