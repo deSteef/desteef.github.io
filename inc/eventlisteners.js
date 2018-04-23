@@ -1,7 +1,7 @@
 jQuery(function($){
 	$(".selection").on('click', 'img', function() {
 		$(this).siblings().removeClass("selected");
-		if ($(this).hasClass("selected") == false) {
+		if ($(this).hasClass("selected") === false) {
 			// userChoice Element
 			$(this).toggleClass("selected");
 			var userChoice = $(this).attr('id');
@@ -21,10 +21,10 @@ jQuery(function($){
 			determineWinner(userChoice, computerChoice);
 			var message = $(".results").find(".shout").text(msg);
 			message.hide().fadeIn();
-			if (winOrLose == 1) {
+			if (winOrLose === 1) {
 				message.append("<br>You Win!");
 				$(".results").find("#computerChoice > img").effect('shake');
-			} else if (winOrLose == 0) {
+			} else if (winOrLose === 0) {
 				message.append("<br>You Lose!");
 				$(".results").find("#yourChoice > img").effect('shake');
 			}
