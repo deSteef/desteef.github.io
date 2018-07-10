@@ -4,36 +4,46 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Rock, Paper, Scissors, Lizard, Spock</title>
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" href="assets/css/styles.css">
+	<title>Rock Paper Scissors Lizard Spock</title>
+	<link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+	<link rel="stylesheet" href="./assets/css/styles.css">
+	
 </head>
 <body>
-	<div class="container">
+	<div class="contaienr">
 		<div class="header">
-			<h1 class="center">Rock, Paper, Scissors, Lizard, Spock</h1>
+			<h1>Rock Paper Scissor Lizard Spock<span>the game</span></h1>
 		</div>
-		<div class="selection">
-			<p class="center">Choose</p>
-			<img id="rock" class="circle" src="assets/images/rock.png">
-			<img id="paper" class="circle" src="assets/images/paper.png">
-			<img id="scissors" class="circle" src="assets/images/scissors.png">
-			<img id="lizard" class="circle" src="assets/images/lizard.png">
-			<img id="spock" class="circle" src="assets/images/spock.png">
+		<div class="score">
+			<p>
+				W: <span id="wins">-</span> L: <span id="losses">-</span> T: <span id="ties">-</span>
+			</p>
+			
 		</div>
-		<div class="results">
-			<p class="center">Your choice</p>
-			<div id="yourChoice" class="question-mark">?</div>
-			<p class="center">Computers choice</p>
-			<div id="computerChoice" class="question-mark">?</div>
-			<p class="shout center">Rock beats Paper. You Win!</p>
+		<div class="picks">
+			<img src="./assets/images/rock.png" alt="Rock icon" id="Rock">
+			<img src="./assets/images/paper.png" alt="Paper icon" id="Paper">
+			<img src="./assets/images/scissors.png" alt="Scissors icon" id="Scissors">
+			<img src="./assets/images/lizard.png" alt="Lizard icon" id="Lizard">
+			<img src="./assets/images/spock.png" alt="Spock icon" id="Spock">
 		</div>
-		<div id="scoreboard"><strong>Your score</strong><br>0 wins<br>0 losses<br>0 ties</div>
+		<div class="arena">
+			<div class="col" id="userChoice">
+				<p>Your Choice</p>
+				<div class="picked">?</div>
+			</div>
+			<div class="col-sm">
+				<div class="versus">VS</div>
+			</div>
+			<div class="col" id="computerChoice">
+				<p>Computers Choice</p>
+				<div class="picked">?</div>
+			</div>
+		</div>
+		<div class="message"></div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-	<script src="assets/js/rpsls.js"></script>
-	<script src="assets/js/eventlisteners.js"></script>
-	
+	<script src="./assets/js/rpsls.js"></script>
+	<script src="./assets/js/eventlisteners.js"></script>
 </body>
 </html>

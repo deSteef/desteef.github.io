@@ -1,37 +1,50 @@
 jQuery(function($){
-	$(".selection").on('click', 'img', function() {
-		$(this).siblings().removeClass("selected");
-		if ($(this).hasClass("selected") === false) {
-			// userChoice Element
-			$(this).toggleClass("selected");
-			var userChoice = $(this).attr('id');
-			var yourChoiceElement = $(".results").find("#yourChoice");
-			yourChoiceElement.removeClass(".question-mark").stop(true, true).empty();
-			var copyElement = $(this).clone().removeClass("selected");
-			yourChoiceElement.append(copyElement).hide().fadeIn();
 
-			// computerChoice Element
-			var computerChoice = getComputerChoice();
-			var computerChoiceElement = $(".results").find("#computerChoice");
-			computerChoiceElement.removeClass(".question-mark").stop(true, true).empty();
-			var copyElement = $(".selection").find("#" + computerChoice).clone().removeClass("selected");
-			computerChoiceElement.append(copyElement).hide().fadeIn();
+	// start a new game on page load
+	var game = new Game();
 
-			// print result
-			determineWinner(userChoice, computerChoice);
-			var message = $(".results").find(".shout").text(msg);
-			message.hide().fadeIn();
-			if (winOrLose === 1) {
-				message.append("<br>You Win!");
-				$(".results").find("#computerChoice > img").effect('shake');
-			} else if (winOrLose === 0) {
-				message.append("<br>You Lose!");
-				$(".results").find("#yourChoice > img").effect('shake');
+	$(".picks").on("click", "img", function() {
+
+		// get choices
+		var userChoice = $(this).attr("id");
+		var computerChoice = game.getComputerChoice();
+
+		// log previous scores
+		var prevWins = game.wins;
+		var prevLosses = game.losses;
+		var prevTies = game.ties;
+
+		// calculate winner
+		var message = game.calculateWinner(userChoice, computerChoice);
+
+		// print user choice
+		var copiedElement = $(".picks").find("#" + userChoice).clone().addClass("picked");
+		$("#userChoice").find(".picked").remove();
+		$("#userChoice").append(copiedElement);
+		$("#userChoice .picked").hide().fadeIn(400, function(){
+			if (prevLosses != game.losses || prevTies != game.ties) {
+				$(this).addClass("loser");
 			}
-			
-			// update score
-			$(".container").find("#scoreboard").html("<strong>Your score</strong><br>" + wins + " wins<br>" + losses + " losses<br>" + ties + " ties");
+		});
 
-		}
+		// print computer choice
+		var copiedElement = $(".picks").find("#" + computerChoice).clone().addClass("picked");
+		$("#computerChoice").find(".picked").remove();
+		$("#computerChoice").append(copiedElement);
+		$("#computerChoice .picked").hide().fadeIn(400, function(){
+			if (prevWins != game.wins || prevTies != game.ties) {
+				$(this).addClass("loser");
+			}
+		});
+
+		// print message
+		$(".message").text(message).hide().fadeIn();
+
+		// update score
+		$("#wins").text(game.wins);
+		$("#losses").text(game.losses);
+		$("#ties").text(game.ties);
+		$(".score p").hide().fadeIn();
+		
 	});
 });

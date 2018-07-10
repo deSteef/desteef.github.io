@@ -1,157 +1,160 @@
-var msg;
-var winOrLose;
-var wins = 0;
-var losses = 0;
-var ties = 0;
-
-function getComputerChoice() {
-	computerChoice = Math.random();
-
-	if (computerChoice <= 0.2) {
-		computerChoice = "rock";
-	} else if (computerChoice > 0.2 && computerChoice <= 0.4) {
-		computerChoice = "paper";
-	} else if (computerChoice > 0.4 && computerChoice <= 0.6) {
-		computerChoice = "scissors";
-	} else if (computerChoice > 0.6 && computerChoice <= 0.8) {
-		computerChoice = "lizard";
-	} else if (computerChoice > 0.8) {
-		computerChoice = "spock";
-	}
-
-	return computerChoice;
+function Game() {
+	this.wins = 0;
+	this.losses = 0;
+	this.ties = 0;
 }
 
-function determineWinner (userChoice, computerChoice) {
+Game.prototype.getComputerChoice = function() {
+	var x = Math.floor(Math.random() * 5);	// 0 t/m 4
+	switch (x) {
+		case 0:
+			return "Rock";
+			break;
+		case 1:
+			return "Paper";
+			break;
+		case 2:
+			return "Scissors";
+			break;
+		case 3:
+			return "Lizard";
+			break;
+		case 4:
+			return "Spock";
+			break;
+		default:
+			console.log("Something went wrong. Value of x ",x);
+	}
+}
 
-	if (typeof userChoice != 'string' || typeof computerChoice != 'string') {
-		msg = "Well this is embarassing. An error ocurred. Check the console for more info.";
-		console.log('userchoice and computerchoice need to be strings');
-		console.log('userchoice is a ' + typeof userChoice);
-		console.log('computerchoice is a ' + typeof computerChoice);
-	} else if (userChoice.length < 1 || computerChoice.length < 1) {
-		msg = "Well this is embarassing. An error ocurred. Check the console for more info.";
-		console.log('userchoice or computerchoice is too short for this function');
-		console.log('userchoice has a length of ' + userChoice.length + ' characters');
-		console.log('computerchoice has a length of ' + computerChoice.length + ' characters');
-	} else if (userChoice == computerChoice) {
-		msg = "It's a tie. There are no winners here.";
-		winOrLose = 2;
-	} else if (userChoice == "rock") {
-		if (computerChoice == "paper") {
-			msg = "Paper covers Rock";
-			winOrLose = 0;
-		} else if (computerChoice == "scissors") {
-			msg = "Rock crushes Scissors";
-			winOrLose = 1;
-		} else if (computerChoice == "lizard") {
-			msg = "Rock crushes Lizard";
-			winOrLose = 1;
-		} else if (computerChoice == "spock") {
-			msg = "Spock vaporizes Rock";
-			winOrLose = 0;
-		} else {
-			msg = "Well this is embarassing. An error ocurred. Check the console for more info.";
-			console.log("Can't determine winner between userchoice: " + userChoice + "and computers choice: " + computerChoice);
+Game.prototype.calculateWinner = function (userChoice, computerChoice) {
+	if (userChoice === computerChoice) {
+		this.ties++;
+		this.lastScore = 2;
+		return "It's a tie";
+	}
+	if (userChoice === "Rock") {
+		if (computerChoice === "Paper") {
+			this.losses++;
+			return "Paper covers Rock. You lose!";
+		} else if (computerChoice === "Scissors") {
+			this.wins++;
+			return "Rock breaks Scissors. You win!";
+		} else if (computerChoice === "Lizard") {
+			this.wins++;
+			return "Rock crushes Lizard. You win!";
+		} else if (computerChoice === "Spock") {
+			this.losses++;
+			return "Spock vaporizes Rock. You lose!";
 		}
-	} else if (userChoice == "paper") {
-		if (computerChoice == "rock") {
-			msg = "Paper covers Rock";
-			winOrLose = 1;
-		} else if (computerChoice == "scissors") {
-			msg = "Scissors cuts Paper";
-			winOrLose = 0;
-		} else if (computerChoice == "lizard") {
-			msg = "Lizard eats Paper";
-			winOrLose = 0;
-		} else if (computerChoice == "spock") {
-			msg = "Paper disproves Spock";
-			winOrLose = 1;
-		} else {
-			msg = "Well this is embarassing. An error ocurred. Check the console for more info.";
-			console.log("Can't determine winner between userchoice: " + userChoice + "and computers choice: " + computerChoice);
+	} else if (userChoice === "Paper") {
+		if (computerChoice === "Rock") {
+			this.wins++;
+			return "Paper covers Rock. You win!";
+		} else if (computerChoice === "Scissors") {
+			this.losses++;
+			return "Scissors cuts Paper. You lose!";
+		} else if (computerChoice === "Lizard") {
+			this.losses++;
+			return "Lizard eats Paper. You lose!";
+		} else if (computerChoice === "Spock") {
+			this.wins++;
+			return "Paper disproves Spock. You win!";
 		}
-	} else if (userChoice == "scissors") {
-		if (computerChoice == "paper") {
-			msg = "Scissors cuts Paper";
-			winOrLose = 1;
-		} else if (computerChoice == "rock") {
-			msg = "Rock crushes Scissors";
-			winOrLose = 0;
-		} else if (computerChoice == "lizard") {
-			msg = "Scissors decapitates Lizard";
-			winOrLose = 1;
-		} else if (computerChoice == "spock") {
-			msg = "Spock smashes Scissors";
-			winOrLose = 0;
-		} else {
-			msg = "Well this is embarassing. An error ocurred. Check the console for more info.";
-			console.log("Can't determine winner between userchoice: " + userChoice + "and computers choice: " + computerChoice);
+	} else if (userChoice === "Scissors") {
+		if (computerChoice === "Rock") {
+			this.losses++;
+			return "Rock breaks Scissors. You lose!";
+		} else if (computerChoice === "Paper") {
+			this.wins++;
+			return "Scissors cuts Paper. You win!";
+		} else if (computerChoice === "Lizard") {
+			this.wins++;
+			return "Scissors decaptitates Lizard. You win!";
+		} else if (computerChoice === "Spock") {
+			this.losses++;
+			return "Spock smashes Scissors. You lose!";
 		}
-	} else if (userChoice == "lizard") {
-		if (computerChoice == "paper") {
-			msg = "Lizard eats Paper";
-			winOrLose = 1;
-		} else if (computerChoice == "rock") {
-			msg = "Rock crushes Lizard";
-			winOrLose = 0;
-		} else if (computerChoice == "scissors") {
-			msg = "Scissors decapitates Lizard";
-			winOrLose = 0;
-		} else if (computerChoice == "spock") {
-			msg = "Lizard poisons Spock";
-			winOrLose = 1;
-		} else {
-			msg = "Well this is embarassing. An error ocurred. Check the console for more info.";
-			console.log("Can't determine winner between userchoice: " + userChoice + "and computers choice: " + computerChoice);
+	} else if (userChoice === "Lizard") {
+		if (computerChoice === "Rock") {
+			this.losses++;
+			return "Rock crushes Lizard. You lose!";
+		} else if (computerChoice === "Paper") {
+			this.wins++;
+			return "Lizard eats Paper. You win!";
+		} else if (computerChoice === "Scissors") {
+			this.losses++;
+			return "Scissors decapitates Lizard. You lose!";
+		} else if (computerChoice === "Spock") {
+			this.wins++;
+			return "Lizard poisons Spock. You win!";
 		}
-	} else if (userChoice == "spock") {
-		if (computerChoice == "paper") {
-			msg = "Paper disproves Spock";
-			winOrLose = 0;
-		} else if (computerChoice == "rock") {
-			msg = "Spock vaporizes Rock";
-			winOrLose = 1;
-		} else if (computerChoice == "scissors") {
-			msg = "Spock smashes scissors";
-			winOrLose = 1;
-		} else if (computerChoice == "lizard") {
-			msg = "Lizard poisons Spock";
-			winOrLose = 0;
-		} else {
-			msg = "Well this is embarassing. An error ocurred. Check the console for more info.";
-			console.log("Can't determine winner between userchoice: " + userChoice + "and computers choice: " + computerChoice);
+	} else if (userChoice === "Spock") {
+		if (computerChoice === "Rock") {
+			this.wins++;
+			return "Spock vaporizes Rock. You win!";
+		} else if (computerChoice === "Paper") {
+			this.losses++;
+			return "Paper disproves Spock. You lose!";
+		} else if (computerChoice === "Scissors") {
+			this.wins++;
+			return "Spock smashes Scissors. You win!";
+		} else if (computerChoice === "Lizard") {
+			this.losses++;
+			return "Lizard poisons Spock. You lose!";
 		}
 	}
-	if (winOrLose == 1) {
-		wins++;
-	} else if (winOrLose == 0) {
-		losses++;
+}
+
+function testAll(multiplier) {
+	var testGame = new Game();
+	choices = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'];
+	var c = 0;
+	if (!multiplier) {
+		multiplier = 1;
+	}
+
+	for (let i = 0; i < multiplier; i++) {
+		choices.forEach(function(userChoice) {
+			choices.forEach(function(computerChoice) {
+				c++
+				testGame.calculateWinner(userChoice, computerChoice);
+			});
+		});
+	}
+
+	// print output
+	console.log("Test ran times: ", c);
+	console.log("W: ", testGame.wins, " L: ", testGame.losses, " T: ", testGame.ties);
+	if ((testGame.ties * 2 != testGame.wins) || testGame.wins != testGame.losses) {
+		console.log("***Error wrong output***");
 	} else {
-		ties++;
+		console.log("Output OK");
 	}
 }
 
-function testDetermineWinner() {
-	console.log("Start test:");
-	var picks = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
-	var c = 0;	// count number of tests;
-	var char; 	// shows boolean as char
-
-	for (i = 0; i < picks.length; i++) {
-		for (j = 0; j < picks.length; j++) {
-			c++;
-			determineWinner(picks[i], picks[j]);
-			if (winOrLose == 1) {
-				char = 'W';
-			} else if (winOrLose == 0) {
-				char = 'L';
-			} else {
-				char = 'T';
-			}
-			console.log("\t" + picks[i] + " vs " + picks[j] + ". Result: " + char);
-		}
+function testOne(userChoice, multiplier) {
+	var testGame = new Game();
+	choices = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'];
+	var c = 0;
+	if (!multiplier) {
+		multiplier = 1;
 	}
-	console.log("Test ran " + c + " times and exited with a total of:");
-	console.log(wins + " wins. " + losses + " losses. And " + ties + " ties.");
+
+	for (let i = 0; i < multiplier; i++) {
+		choices.forEach(function(computerChoice) {
+			c++
+			testGame.calculateWinner(userChoice, computerChoice);
+		});
+	}
+
+	// print output
+	console.log("Test ran times: ", c);
+	console.log("W: ", testGame.wins, " L: ", testGame.losses, " T: ", testGame.ties);
+	if ((testGame.ties * 2 != testGame.wins) || testGame.wins != testGame.losses) {
+		console.log("***Error wrong output***");
+	} else {
+		console.log("Output OK");
+	}
 }
+

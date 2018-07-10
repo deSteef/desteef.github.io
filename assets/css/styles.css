@@ -1,89 +1,120 @@
-* {
-	box-sizing: border-box;
-	font-family: 'Montserrat', sans-serif;
-}
 body {
-	background-color: #fff;	
+	font-family: 'Gaegu', cursive;
 }
-p {
-	font-size: 1.2em;
-}
-.container{
+.container {
 	width: 100%;
 }
-.center {
+.header {
 	text-align: center;
 }
-.selection, .results {
-	display: inline-block;
+.header span {
+	font-size: 0.8em;
+	display: block;
+}
+.score {
 	text-align: center;
-	width: 100%;
-	margin-bottom: 25px;
-}
-.circle {
-	display:inline-block;
-	border-radius: 100%;
-	width: 19%;
-	height: 19%;
-	min-width: 60px;
-	min-height: 60px;
-	max-width: 120px;
-	max-height: 120px;
-	padding: 10px;
-}
-#yourChoice .circle, #computerChoice .circle {
-	min-width: 80px;
-	min-height: 80px;
-}
-.selection .circle:hover {
-	transition: top 0.5s ease;
-	top: -5px;
-}
-.shout {
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 1.2em;
-}
-#scoreboard {
+	margin: 25px auto;
+	font-size: 2em;
+	height: 40px;
 	background-color: lightgreen;
-	line-height: 2em;
+	border-radius: 25px;
+	max-width: 325px;
+}
+.score p {
+	margin: 0;
+}
+.picks {
+	width: 100%;
+	margin: 25px auto;
 	text-align: center;
 }
-.question-mark {
+.picks img {
+	position: relative;
+	vertical-align: middle;
+	width: 15%;
+	border-radius: 25px;
+	top: 0;
+	transition: top .2s;
+	-webkit-transition: top .02
+}
+.picks img:hover {
+	top: -10px;
+}
+.picked {
+	margin: auto;
+	border-radius: 25px;
+	width: 100px;
+	height: 100px;
+	background-color: #eee;
+	line-height: 100px;
+	font-weight: 700;
+	font-size: 3em;
+}
+.arena {
+	width: 100%;
+	margin: 25px auto;
+	max-width: 500px;
+	font-size: 1.5em;
+}
+.col {
 	text-align: center;
-	color: #ababab;
-	font-size: 5em;
-	font-family: arial, sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	float: left;
 }
-.selected {
-	border: 3px solid orange;
+.col-sm {
+	text-align: center;
+	box-sizing: border-box;
+	width: 100%;
+	float: left;
 }
-@media only screen and (min-width: 950px) {
-	body {
-		background-color: lightgrey;
+.versus {
+	text-align: center;
+	font-size: 1.5em;
+}
+.message {
+	width: 100%;
+	text-align: center;
+	font-size: 1.7em;
+	font-weight: 600;
+}
+.arena p {
+	margin: 0;
+}
+.loser {
+	transition: all 1s;
+	-webkit-transition: all 1s;
+	transition-delay: 1s;
+	-webkit-transition-delay: 1s;
+	filter: brightness(40%);
+}
+
+/* mobile first */
+@media only screen and (min-width: 550px) {
+	.arena {
+		height: 211px;
 	}
-	.header{
-		margin-bottom: 5em;
+	.col {
+		width: 40%;
 	}
-	.container {
-		background-color: #fff;
-		border: 1px solid grey;
-		max-width: 1024px;
-		margin: auto;
+	.col-sm {
+		width: 20%;
+		height: 211px;
 	}
-	.question-mark {
-		font-size: 8em;
-		font-weight: 500;
+	.versus {
+		position: relative;
+		top: 45%;
 	}
-	.shout {
-		font-size: 2em;
+	.picks img {
+		width: 100px;
+		height: 100px;
 	}
-	#scoreboard {
-		position: absolute;
-		bottom: 50%;
-		right: 0;
-		width: auto;
-		text-align: justify;
-		padding: 30px;
+	.arena p {
+		margin: 1em 0;
+	}
+	.picked {
+		width: 122px;
+		height: 122px;
+		line-height: 122px;
 	}
 }
